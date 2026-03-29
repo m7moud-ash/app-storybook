@@ -26,6 +26,7 @@ export interface ButtonProps extends Omit<PressableProps, 'style'> {
   appearance?: ButtonAppearance;
   disabled?:   boolean;
   loading?:    boolean;
+  fullWidth?:  boolean;
   leftIcon?:   React.ReactNode;
   rightIcon?:  React.ReactNode;
   onPress?:    () => void;
@@ -40,6 +41,7 @@ export function Button({
   appearance = 'Normal',
   disabled   = false,
   loading    = false,
+  fullWidth  = false,
   leftIcon,
   rightIcon,
   onPress,
@@ -57,6 +59,7 @@ export function Button({
     <Pressable
       style={({ pressed }) => [
         containerStyle,
+        fullWidth && styles.fullWidth,
         pressed && !isDisabled && styles.pressed,
       ]}
       onPress={onPress}
@@ -179,5 +182,6 @@ function resolveSpinnerColor(type: ButtonType, appearance: ButtonAppearance, col
 // ─── Shared styles ────────────────────────────────────────────────────────────
 
 const styles = StyleSheet.create({
-  pressed: { opacity: 0.75 },
+  pressed:   { opacity: 0.75 },
+  fullWidth: { alignSelf: 'stretch' },
 });

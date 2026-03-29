@@ -27,18 +27,18 @@ export function Badge({ label, type = 'Default' }: BadgeProps) {
 
   return (
     <View style={[styles.container, { backgroundColor: tok.background }]}>
-      <View style={[styles.dot, { borderColor: tok.dot }]} />
+      <View style={[styles.dot, { backgroundColor: tok.dot }]} />
       <Text style={[styles.label, { color: tok.text }]}>{label}</Text>
     </View>
   );
 }
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
-// Exact values from Figma node 3501:42498:
+// Exact values from Figma node 3501:42494:
 //   padding: spacing.space-2 (8px) horizontal, spacing.space-1 (4px) vertical
 //   gap:     spacing.space-1 (4px)
-//   radius:  radius.rounded-sm (4px)  ← Figma uses rounded-xs = 4px
-//   dot:     12px circle with colored border, no fill
+//   radius:  radius.rounded-xs = 4px
+//   dot:     4px solid filled circle (backgroundColor = dot token color)
 //   font:    Inter Medium, 12px / 16px, tracking 0
 
 const styles = StyleSheet.create({
@@ -52,11 +52,9 @@ const styles = StyleSheet.create({
     borderRadius:    radius.sm,    // 4px
   },
   dot: {
-    width:        12,
-    height:       12,
-    borderRadius: 6,
-    borderWidth:  1,
-    backgroundColor: 'transparent',
+    width:        4,
+    height:       4,
+    borderRadius: 2,
   },
   label: {
     fontFamily:    typography.fontFamily.en,
