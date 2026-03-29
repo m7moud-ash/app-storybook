@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // Figma layer "lucide/wifi-off" → WifiOff
-import { WifiOff } from 'lucide-react-native';
+import { WifiOff } from 'lucide-react';
 import { radius, spacing, typography } from '../../../tokens';
 import { useSurface } from '../../../tokens/theme';
 import { Button } from '../../atoms/Button/Button';

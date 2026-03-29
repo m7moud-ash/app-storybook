@@ -6,7 +6,7 @@ import { Animated, Easing, StyleSheet, Text, View } from 'react-native';
 //   "lucide/circle-check"   → CircleCheck  (Success)
 //   "lucide/info"           → Info         (Normal — informational)
 //   "lucide/loader-2"       → Loader2      (Loading)
-import { CircleX, CircleAlert, Info, CircleCheck, Loader2 } from 'lucide-react-native';
+import { CircleX, CircleAlert, Info, CircleCheck, Loader2 } from 'lucide-react';
 import { radius, spacing, typography } from '../../../tokens';
 import { useMessageColors } from '../../../tokens/theme';
 
