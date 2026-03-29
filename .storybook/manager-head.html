@@ -1,0 +1,20 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  /* Apply Inter to the entire Storybook manager UI */
+  * { font-family: 'Inter', system-ui, -apple-system, sans-serif !important; }
+
+  /* Smooth color transitions when switching themes */
+  #storybook-panel-root,
+  #storybook-explorer-menu,
+  .sidebar-container,
+  [class*="Sidebar"],
+  [class*="Panel"],
+  [class*="Toolbar"] {
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+</style>
