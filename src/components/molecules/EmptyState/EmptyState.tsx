@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+// Figma layer "lucide/wifi-off" → WifiOff
+import { WifiOff } from 'lucide-react-native';
 import { radius, spacing, typography } from '../../../tokens';
 import { useSurface } from '../../../tokens/theme';
 import { Button } from '../../atoms/Button/Button';
@@ -24,65 +26,6 @@ export interface EmptyStateProps {
   secondaryAction?:  EmptyStateAction;
 }
 
-// ─── Wifi-off icon ────────────────────────────────────────────────────────────
-// 64 × 64, theme-aware, drawn with raw SVG elements (React Native Web / Vite).
-
-const Svg    = (p: React.SVGProps<SVGSVGElement>)    => React.createElement('svg',    p);
-const Circle = (p: React.SVGProps<SVGCircleElement>) => React.createElement('circle', p);
-const Path   = (p: React.SVGProps<SVGPathElement>)   => React.createElement('path',   p);
-
-function WifiOffIcon({ color }: { color: string }) {
-  const sw = 3.5; // stroke-width
-
-  return (
-    <Svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={64}
-      height={64}
-      viewBox="0 0 64 64"
-      fill="none"
-      style={{ display: 'block' }}
-    >
-      {/* Center dot */}
-      <Circle cx={32} cy={53} r={4} fill={color} />
-
-      {/* Inner arc — visible left half only (right half clipped by the slash) */}
-      <Path
-        d="M21 43.5a15.5 15.5 0 0 1 11-4.5"
-        stroke={color} strokeWidth={sw} strokeLinecap="round"
-      />
-      {/* Inner arc — right half */}
-      <Path
-        d="M32 39a15.5 15.5 0 0 1 11 4.5"
-        stroke={color} strokeWidth={sw} strokeLinecap="round"
-      />
-
-      {/* Middle arc — left half */}
-      <Path
-        d="M12 34a28 28 0 0 1 20-8"
-        stroke={color} strokeWidth={sw} strokeLinecap="round"
-      />
-      {/* Middle arc — right half */}
-      <Path
-        d="M32 26a28 28 0 0 1 20 8"
-        stroke={color} strokeWidth={sw} strokeLinecap="round"
-      />
-
-      {/* Outer arc — left half only (slash interrupts right) */}
-      <Path
-        d="M4 24.5a40 40 0 0 1 28-11.5"
-        stroke={color} strokeWidth={sw} strokeLinecap="round"
-      />
-
-      {/* Diagonal "no connection" slash — lower-left to upper-right */}
-      <Path
-        d="M42 12L22 52"
-        stroke={color} strokeWidth={sw} strokeLinecap="round"
-      />
-    </Svg>
-  );
-}
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function EmptyState({
@@ -96,7 +39,7 @@ export function EmptyState({
 
   const iconNode = icon !== undefined
     ? icon
-    : <WifiOffIcon color={surface.text} />;
+    : <WifiOff size={64} color={surface.text} strokeWidth={1.5} />;
 
   return (
     <View style={styles.container}>
