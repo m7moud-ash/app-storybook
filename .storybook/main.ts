@@ -22,10 +22,25 @@ const config: StorybookConfig = {
         },
       },
       optimizeDeps: {
-        // lucide-react-native v1 ESM bundle has a missing export in its
-        // pre-built context.js; exclude it so Vite uses the source files directly
+        // Skip dep pre-bundling (rolldown) for lucide-react-native — it fails
+        // because context.js is missing the LucideProvider export in v1.7.0
         exclude: ['lucide-react-native'],
       },
+      plugins: [
+        {
+          // Patch context.js at serve time (after the optimizer is skipped above)
+          // by appending the missing LucideProvider stub export.
+          name: 'lucide-context-patch',
+          transform(code: string, id: string) {
+            if (id.includes('lucide-react-native') && id.endsWith('context.js')) {
+              return {
+                code: code + '\nexport function LucideProvider({ children }) { return children; }\n',
+                map: null,
+              };
+            }
+          },
+        },
+      ],
     });
   },
 };
