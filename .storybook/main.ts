@@ -21,6 +21,11 @@ const config: StorybookConfig = {
           'react-native-svg': 'react-native-svg/src/ReactNativeSVG.web',
         },
       },
+      optimizeDeps: {
+        // lucide-react-native v1 ESM bundle has a missing export in its
+        // pre-built context.js; exclude it so Vite uses the source files directly
+        exclude: ['lucide-react-native'],
+      },
     });
   },
 };
