@@ -110,7 +110,7 @@ function StatusChip({ label }: { label: string }) {
 
 const styles = StyleSheet.create({
   card: {
-    width: 335,
+    width: '100%',
     borderWidth: 1,
     borderRadius: 14,
     padding: spacing[4],
